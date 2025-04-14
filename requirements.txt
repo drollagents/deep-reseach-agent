@@ -1,0 +1,10 @@
+firecrawl
+firecrawl-py
+flask
+python-dotenv
+langchain-groq
+langchain-core
+markupsafe
+asyncio
+nest-asyncio
+pydantic

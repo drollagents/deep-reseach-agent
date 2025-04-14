@@ -1,0 +1,61 @@
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+}
+
+#initial-report, #enhanced-report {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+#initial-report h1, #enhanced-report h1,
+#initial-report h2, #enhanced-report h2,
+#initial-report h3, #enhanced-report h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+#initial-report p, #enhanced-report p {
+    margin-bottom: 1rem;
+}
+
+.tab-content {
+    background-color: #fff;
+    min-height: 200px;
+}
+
+.nav-tabs .nav-link {
+    color: #555;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: 500;
+}
+
+.sources-section {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+pre {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+blockquote {
+    border-left: 4px solid #ccc;
+    margin-left: 0;
+    padding-left: 15px;
+    color: #666;
+}

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 flask==3.0.0
 python-dotenv
 firecrawl
@@ -8,7 +7,6 @@ langchain-core
 nest-asyncio
 gunicorn
 asyncio
-=======
 firecrawl
 firecrawl-py
 flask
@@ -18,5 +16,4 @@ langchain-core
 markupsafe
 asyncio
 nest-asyncio
->>>>>>> 5b17b1a5fb0126518d85ef0ca79fd705596279a2
 pydantic

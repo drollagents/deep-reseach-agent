@@ -229,15 +229,7 @@ def research():
         print(f"ERROR in /research endpoint: {str(e)}", file=sys.stderr)
         return jsonify({"success": False, "error": str(e)}), 500
 
-<<<<<<< HEAD
 # Add this near the bottom of the file, replace the existing if __name__ == "__main__" block
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
-=======
-if __name__ == "__main__":
-    # Read port from .flaskenv if available, otherwise use default
-    port = int(os.environ.get("FLASK_RUN_PORT", 7003))
-    print(f"Starting Flask app on http://127.0.0.1:{port}")
-    app.run(debug=True, port=port)
->>>>>>> 5b17b1a5fb0126518d85ef0ca79fd705596279a2

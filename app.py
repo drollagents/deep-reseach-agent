@@ -205,6 +205,24 @@ def index():
 
 @app.route("/research", methods=["POST"])
 def research():
+    try:
+        data = request.get_json()
+        research_topic = data.get('topic')
+        if not research_topic:
+            return jsonify({"error": "No topic provided"}), 400
+
+        print(f"Received research request for topic: {research_topic}")
+        print(f"Starting research process for topic: {research_topic}")
+        
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        result = loop.run_until_complete(run_research_process(research_topic))
+        loop.close()
+        
+        return jsonify(result)
+    except Exception as e:
+        print(f"Error in research route: {str(e)}", file=sys.stderr)
+        return jsonify({"error": str(e)}), 500
     """Handle research requests"""
     data = request.json
     research_topic = data.get("research_topic")

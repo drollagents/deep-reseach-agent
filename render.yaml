@@ -3,9 +3,14 @@ services:
     name: deep-research-agent
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn --config gunicorn_config.py app:app
     envVars:
       - key: FIRECRAWL_API_KEY
         sync: false
       - key: GROQ_API_KEY
         sync: false
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+    healthCheckPath: /
+    startupTimeout: 300

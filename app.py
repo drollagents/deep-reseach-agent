@@ -200,8 +200,7 @@ async def run_research_process(topic: str):
 # Flask routes
 @app.route("/")
 def index():
-    """Render the main page"""
-    return render_template("index.html")
+    return render_template('index.html')
 
 @app.route("/research", methods=["POST"])
 def research():

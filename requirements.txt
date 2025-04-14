@@ -1,0 +1,10 @@
+flask==3.0.0
+python-dotenv
+firecrawl
+firecrawl-py
+langchain-groq
+langchain-core
+nest-asyncio
+gunicorn
+asyncio
+pydantic

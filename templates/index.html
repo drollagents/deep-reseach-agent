@@ -1,38 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Deep Research Agent</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="description" content="Get comprehensive research on any topic with our Deep Research Agent powered by AI.">
+    
+    <title>Deep Research Agent - Droll Agents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
-    <h1>Deep Research Agent</h1>
-    <form id="researchForm">
-        <input type="text" id="topic" name="topic" placeholder="Enter research topic" required>
-        <button type="submit">Research</button>
-    </form>
-
-    <div id="results"></div>
-
-    <script>
-        document.getElementById('researchForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const topic = document.getElementById('topic').value;
-            
-            try {
-                const response = await fetch('/research', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ topic: topic })
-                });
+    <div class="container">
+        <!-- Back Button -->
+        <a href="https://droll-agents-v0.netlify.app/src/pages/agents.html" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Agents</span>
+        </a>
+        
+        <div class="agent-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 21V9"></path>
+            </svg>
+            <span>Research Agent</span>
+        </div>
+        
+        <h1>Deep Research Agent</h1>
+        <p>Get comprehensive, in-depth research on any topic with our AI-powered research agent. Perfect for academic projects, market research, or learning about complex subjects.</p>
+        
+        <div class="search-container">
+            <input type="text" id="research-input" placeholder="Enter your research topic (e.g., 'Quantum Computing', 'Climate Change Solutions')">
+            <button id="submit-btn"><span>Research</span></button>
+        </div>
+        
+        <div id="loading" class="hidden">
+            <div class="loader"></div>
+            <p>Conducting in-depth research. This may take a moment...</p>
+        </div>
+        
+        <div id="results" class="results-container hidden">
+            <div class="tabs-container">
+                <div class="nav-tabs">
+                    <button id="initial-tab" class="nav-link active" data-bs-toggle="tab" data-bs-target="initial-content">Initial Report</button>
+                    <button id="enhanced-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="enhanced-content">Enhanced Report</button>
+                </div>
                 
-                const data = await response.json();
-                document.getElementById('results').innerHTML = JSON.stringify(data, null, 2);
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('results').innerHTML = 'Error: ' + error.message;
-            }
-        });
-    </script>
+                <div class="tab-content">
+                    <div id="initial-content" class="tab-pane show active">
+                        <div id="initial-report" class="report"></div>
+                    </div>
+                    <div id="enhanced-content" class="tab-pane">
+                        <div id="enhanced-report" class="report"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="error" class="error hidden"></div>
+        
+        <div class="agent-features">
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span>In-depth Analysis</span>
+            </div>
+            
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                    <line x1="9" y1="20" x2="15" y2="20"></line>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+                <span>Multiple Perspectives</span>
+            </div>
+            
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Structured Reports</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p class="powered-by">Powered by <strong>Droll Agents</strong></p>
+        </div>
+    </div>
 </body>
 </html>
